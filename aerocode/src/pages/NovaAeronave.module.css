@@ -1,0 +1,5 @@
+.page { padding: 80px 32px 32px; max-width: 1200px; margin: 0 auto; }
+.header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
+.title { font-family: var(--f-display); font-size: 28px; font-weight: 700; }
+.subtitle { color: var(--c-text3); font-size: 13px; margin-top: 4px; }
+.row { display: flex; gap: 16px; }

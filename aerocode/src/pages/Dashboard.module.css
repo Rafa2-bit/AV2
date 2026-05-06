@@ -1,0 +1,18 @@
+.page { padding: 80px 32px 32px; max-width: 1200px; margin: 0 auto; }
+.header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; }
+.title { font-family: var(--f-display); font-size: 28px; font-weight: 700; letter-spacing: 1px; color: var(--c-text); }
+.subtitle { color: var(--c-text3); font-size: 13px; margin-top: 4px; text-transform: capitalize; }
+.stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 32px; }
+.statCard {
+  background: var(--c-surface); border: 1px solid var(--c-border);
+  border-radius: var(--radius-lg); padding: 20px;
+  border-top: 2px solid var(--accent);
+  transition: transform 0.15s;
+}
+.statCard:hover { transform: translateY(-2px); }
+.statValue { font-family: var(--f-display); font-size: 36px; font-weight: 700; color: var(--accent); line-height: 1; }
+.statLabel { font-size: 12px; color: var(--c-text3); margin-top: 6px; letter-spacing: 0.5px; text-transform: uppercase; font-family: var(--f-display); }
+.statSub { font-size: 11px; color: var(--c-text3); margin-top: 2px; }
+.section { margin-top: 8px; }
+.sectionHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.sectionTitle { font-family: var(--f-display); font-size: 16px; font-weight: 600; letter-spacing: 0.5px; color: var(--c-text2); }

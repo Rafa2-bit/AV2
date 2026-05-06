@@ -1,0 +1,106 @@
+/* ── Aerocode Design System ─────────────────────────────────────── */
+:root {
+  --c-bg:        #050C14;
+  --c-surface:   #0B1825;
+  --c-surface2:  #0F2236;
+  --c-border:    #1A3A5C;
+  --c-border2:   #254D73;
+  --c-accent:    #0EA5E9;
+  --c-accent2:   #38BDF8;
+  --c-accent-dim:#0369A1;
+  --c-green:     #10B981;
+  --c-green-dim: #064E3B;
+  --c-yellow:    #F59E0B;
+  --c-yellow-dim:#78350F;
+  --c-red:       #EF4444;
+  --c-red-dim:   #7F1D1D;
+  --c-text:      #E2EDF5;
+  --c-text2:     #94B4CA;
+  --c-text3:     #4A7A9B;
+  --f-display: 'Rajdhani', sans-serif;
+  --f-mono:    'Share Tech Mono', monospace;
+  --f-body:    'Barlow', sans-serif;
+  --radius:    6px;
+  --radius-lg: 10px;
+  --shadow:    0 4px 24px rgba(0,0,0,0.5);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root {
+  height: 100%;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--f-body);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--c-surface); }
+::-webkit-scrollbar-thumb { background: var(--c-border2); border-radius: 3px; }
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(14,165,233,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14,165,233,0.02) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+button { font-family: var(--f-body); cursor: pointer; border: none; outline: none; transition: all 0.15s ease; }
+input, select, textarea {
+  font-family: var(--f-body); font-size: 14px;
+  background: var(--c-surface2); border: 1px solid var(--c-border);
+  color: var(--c-text); padding: 8px 12px; border-radius: var(--radius);
+  outline: none; transition: border-color 0.15s; width: 100%;
+}
+input:focus, select:focus { border-color: var(--c-accent); }
+a { color: inherit; text-decoration: none; }
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 10px; border-radius: 20px; font-size: 11px;
+  font-weight: 600; letter-spacing: 0.5px; font-family: var(--f-display); text-transform: uppercase;
+}
+.badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.badge-green  { background: var(--c-green-dim);  color: var(--c-green); }
+.badge-yellow { background: var(--c-yellow-dim); color: var(--c-yellow); }
+.badge-red    { background: var(--c-red-dim);    color: var(--c-red); }
+.badge-blue   { background: #0C2D45;             color: var(--c-accent2); }
+.badge-gray   { background: #1A2E3D;             color: var(--c-text2); }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px;
+  border-radius: var(--radius); font-family: var(--f-display); font-size: 14px;
+  font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+}
+.btn-primary { background: var(--c-accent); color: #fff; }
+.btn-primary:hover { background: var(--c-accent2); transform: translateY(-1px); }
+.btn-secondary { background: transparent; border: 1px solid var(--c-border2); color: var(--c-text2); }
+.btn-secondary:hover { border-color: var(--c-accent); color: var(--c-accent); }
+.btn-danger { background: transparent; border: 1px solid var(--c-red); color: var(--c-red); }
+.btn-danger:hover { background: var(--c-red-dim); }
+.btn-sm { padding: 5px 12px; font-size: 12px; }
+.card { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--radius-lg); padding: 20px; }
+.tbl { width: 100%; border-collapse: collapse; }
+.tbl th {
+  text-align: left; padding: 10px 14px; font-family: var(--f-display);
+  font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--c-text3); border-bottom: 1px solid var(--c-border);
+}
+.tbl td { padding: 12px 14px; border-bottom: 1px solid rgba(26,58,92,0.4); font-size: 13px; color: var(--c-text2); }
+.tbl tr:last-child td { border-bottom: none; }
+.tbl tbody tr:hover { background: rgba(14,165,233,0.04); }
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center; z-index: 1000; animation: fadeIn 0.15s ease;
+}
+.modal {
+  background: var(--c-surface); border: 1px solid var(--c-border2); border-radius: var(--radius-lg);
+  padding: 28px; width: 480px; max-width: 95vw; box-shadow: var(--shadow); animation: slideUp 0.2s ease;
+}
+.modal-title { font-family: var(--f-display); font-size: 18px; font-weight: 700; color: var(--c-text); margin-bottom: 20px; letter-spacing: 0.5px; }
+.modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+.form-field { margin-bottom: 14px; }
+.form-label { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--c-text3); margin-bottom: 5px; font-family: var(--f-display); }
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+@keyframes slideUp { from { transform: translateY(16px); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
