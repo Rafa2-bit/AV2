@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { mockAeronaves } from '../data/mockData'
+import { useApp } from '../data/AppContext'
 import styles from './Aeronaves.module.css'
 
 const statusBadge = s => {
@@ -12,6 +12,7 @@ const statusBadge = s => {
 
 export default function Aeronaves() {
   const navigate = useNavigate()
+  const { aeronaves: mockAeronaves } = useApp()
   const [search, setSearch] = useState('')
   const [filtroTipo, setFiltroTipo] = useState('TODOS')
 

@@ -1,26 +1,26 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useApp } from '../data/AppContext'
 import styles from './Login.module.css'
 
 export default function Login() {
-  const [user, setUser] = useState('')
-  const [pass, setPass] = useState('')
+  const [loginVal, setLoginVal] = useState('')
+  const [senhaVal, setSenhaVal] = useState('')
   const [err, setErr] = useState('')
   const navigate = useNavigate()
+  const { login } = useApp()
 
   function handleLogin(e) {
     e.preventDefault()
-    if (!user || !pass) { setErr('Preencha usuário e senha.'); return }
-    if (pass.length < 3) { setErr('Senha inválida.'); return }
+    setErr('')
+    const ok = login(loginVal.trim(), senhaVal)
+    if (!ok) { setErr('Usuário ou senha inválidos.'); return }
     navigate('/dashboard')
   }
 
   return (
     <div className={styles.page}>
-      <div className={styles.bg}>
-        <div className={styles.bgGlow} />
-        <div className={styles.bgGrid} />
-      </div>
+      <div className={styles.bg}><div className={styles.bgGlow}/><div className={styles.bgGrid}/></div>
       <div className={styles.card}>
         <div className={styles.brand}>
           <span className={styles.brandIcon}>✈</span>
@@ -29,19 +29,22 @@ export default function Login() {
         </div>
         <form onSubmit={handleLogin} className={styles.form}>
           <div className="form-field">
-            <label className="form-label">Usuário</label>
-            <input value={user} onChange={e => setUser(e.target.value)} placeholder="seu.usuario" autoComplete="username" />
+            <label className="form-label">Login</label>
+            <input value={loginVal} onChange={e=>setLoginVal(e.target.value)} placeholder="seu.login" autoComplete="username"/>
           </div>
           <div className="form-field">
             <label className="form-label">Senha</label>
-            <input type="password" value={pass} onChange={e => setPass(e.target.value)} placeholder="••••••••" autoComplete="current-password" />
+            <input type="password" value={senhaVal} onChange={e=>setSenhaVal(e.target.value)} placeholder="••••••••" autoComplete="current-password"/>
           </div>
           {err && <p className={styles.err}>{err}</p>}
-          <button type="submit" className={`btn btn-primary ${styles.submitBtn}`}>
-            Acessar Sistema
-          </button>
+          <button type="submit" className={`btn btn-primary ${styles.submitBtn}`}>Acessar Sistema</button>
         </form>
-        <p className={styles.hint}>Use qualquer usuário e senha (mín. 3 caracteres)</p>
+        <div className={styles.hint}>
+          <p>Usuários de demonstração:</p>
+          <p><b>admin</b> / 1234 — Administrador</p>
+          <p><b>joao</b> / 1234 — Engenheiro</p>
+          <p><b>maria</b> / 1234 — Operador</p>
+        </div>
       </div>
     </div>
   )
